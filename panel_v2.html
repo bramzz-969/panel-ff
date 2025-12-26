@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF MOD PANEL</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:radial-gradient(circle at top,#0f3d3d,#000);
+  color:#fff;
+  overflow:hidden;
+}
+.panel{
+  padding:18px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+h1{
+  text-align:center;
+  font-size:30px;
+  letter-spacing:2px;
+}
+.sub{
+  text-align:center;
+  font-size:14px;
+  opacity:.7;
+  margin-bottom:10px;
+}
+.card{
+  background:rgba(0,0,0,.6);
+  border-radius:18px;
+  padding:16px;
+  box-shadow:0 0 25px #00ffcc55;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.options{
+  overflow-y:auto;
+  padding-right:5px;
+}
+.opt{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:12px 0;
+  font-size:17px;
+  font-weight:bold;
+}
+.switch{position:relative;width:52px;height:28px}
+.switch input{display:none}
+.slider{
+  position:absolute;inset:0;
+  background:#444;border-radius:30px;
+  transition:.3s
+}
+.slider:before{
+  content:"";position:absolute;
+  width:22px;height:22px;
+  left:3px;top:3px;
+  background:#fff;border-radius:50%;
+  transition:.3s
+}
+input:checked+.slider{
+  background:#00ffcc;
+  box-shadow:0 0 14px #00ffcc
+}
+input:checked+.slider:before{
+  transform:translateX(24px)
+}
+.log{
+  margin-top:12px;
+  background:#000;
+  border-radius:12px;
+  padding:10px;
+  font-size:12px;
+  height:120px;
+  overflow:auto;
+  color:#00ffcc;
+  font-family:monospace;
+}
+.btn{
+  width:100%;
+  margin-top:14px;
+  padding:18px;
+  font-size:20px;
+  font-weight:bold;
+  border:none;
+  border-radius:20px;
+  background:linear-gradient(90deg,#00ffcc,#00bfff);
+  color:#000;
+  box-shadow:0 0 25px #00ffcc;
+}
+
+/* LOADING */
+.loading{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:none;
+  padding:20px;
+  font-family:monospace;
+}
+.loading h2{
+  font-size:24px;
+  color:#00ffcc;
+}
+.loading-text{
+  font-size:14px;
+  margin-top:10px;
+  white-space:pre-line;
+  color:#00ffcc;
+}
+
+/* QUOTE */
+.quote{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+}
+.quoteText{
+  font-size:26px;
+  line-height:1.7;
+  color:#00ffcc;
+  text-shadow:0 0 10px #00ffcc;
+}
+.hide{display:none}
+</style>
+</head>
+
+<body>
+
+<div class="panel" id="panel">
+  <h1>FF MOD PANEL</h1>
+  <div class="sub">ULTIMATE INJECT SYSTEM</div>
+
+  <div class="card">
+    <div class="options">
+      <div class="opt">Aimbot Headshot<label class="switch"><input type="checkbox" data-name="Aimbot Headshot"><span class="slider"></span></label></div>
+      <div class="opt">Auto Headshot<label class="switch"><input type="checkbox" data-name="Auto Headshot"><span class="slider"></span></label></div>
+      <div class="opt">Aimlock Pro<label class="switch"><input type="checkbox" data-name="Aimlock Pro"><span class="slider"></span></label></div>
+      <div class="opt">Wallhack Vision<label class="switch"><input type="checkbox" data-name="Wallhack Vision"><span class="slider"></span></label></div>
+      <div class="opt">No Recoil<label class="switch"><input type="checkbox" data-name="No Recoil"><span class="slider"></span></label></div>
+      <div class="opt">Damage Booster<label class="switch"><input type="checkbox" data-name="Damage Booster"><span class="slider"></span></label></div>
+      <div class="opt">Speed Hack<label class="switch"><input type="checkbox" data-name="Speed Hack"><span class="slider"></span></label></div>
+      <div class="opt">Anti Ban Shield<label class="switch"><input type="checkbox" data-name="Anti Ban Shield"><span class="slider"></span></label></div>
+      <div class="opt">FPS Booster<label class="switch"><input type="checkbox" data-name="FPS Booster"><span class="slider"></span></label></div>
+    </div>
+
+    <div class="log" id="log">[SYSTEM] Ready...</div>
+    <button class="btn" onclick="startHack()">MASUK KE GAME</button>
+  </div>
+</div>
+
+<div class="loading" id="loading">
+  <h2>EXECUTING INJECTION...</h2>
+  <div class="loading-text" id="loadingText"></div>
+</div>
+
+<div class="quote" id="quote">
+  <div class="quoteText">
+    Mau jago?
+    <br><br>
+    Bukan pake panel,
+    <br>
+    bukan pake jalan pintas.
+    <br><br>
+    Latihan aim.
+    <br>
+    Ngerti map.
+    <br>
+    Main pake otak 😹😹
+    <br><br>
+    Skill asli gak pernah butuh tombol ON.
+  </div>
+</div>
+
+<script>
+const logBox=document.getElementById("log");
+const checks=document.querySelectorAll("input[type=checkbox]");
+
+checks.forEach(c=>{
+  c.addEventListener("change",()=>{
+    logBox.innerHTML+=`\n[✓] ${c.dataset.name} ${c.checked?"ENABLED":"DISABLED"}`;
+    logBox.scrollTop=logBox.scrollHeight;
+  });
+});
+
+function startHack(){
+  panel.classList.add("hide");
+  loading.style.display="block";
+
+  const selected=[...checks].filter(c=>c.checked).map(c=>c.dataset.name);
+  const steps=[
+    "Connecting to game process...",
+    "Scanning memory...",
+    selected.length
+      ? "Injecting selected modules:"
+      : "No module selected, running core injector..."
+  ];
+
+  let text="";
+  steps.forEach(s=>text+=s+"\n");
+  selected.forEach(s=>text+=`[+] ${s} loaded\n`);
+
+  text+="Finalizing injection...\n";
+  text+="Launching game...\n";
+
+  let i=0;
+  const lines=text.split("\n");
+  const int=setInterval(()=>{
+    if(i<lines.length){
+      loadingText.innerHTML+=lines[i]+"\n";
+      i++;
+    }else{
+      clearInterval(int);
+      setTimeout(()=>{
+        loading.style.display="none";
+        quote.style.display="flex";
+      },1500);
+    }
+  },700);
+}
+</script>
+
+</body>
+</html>
